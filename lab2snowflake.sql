@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS feedback (
 
 CREATE TABLE IF NOT EXISTS location (
     address VARCHAR(50) PRIMARY KEY,
-    city VARCHAR(50) NOT NULL,
+    city VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE servicecenter (
@@ -60,9 +60,11 @@ CREATE TABLE IF NOT EXISTS service (
     CONSTRAINT fk_service_detail FOREIGN KEY (detail) REFERENCES details (detail_id) ON DELETE RESTRICT ON UPDATE NO ACTION
 );
 
-COPY customers(car_plate, fullname, cellphone, car) FROM '/tmp/insert-data/customers.csv' DELIMITER ',' CSV HEADER;
-COPY location(address, city) FROM '/tmp/insert-data/location.csv' DELIMITER ',' CSV HEADER;
-COPY works(kind, avg_days, price) FROM '/tmp/insert-data/works.csv' DELIMITER ',' CSV HEADER;
-COPY repairmen(fullname, job) FROM '/tmp/insert-data/repairmen.csv' DELIMITER ',' CSV HEADER;
-COPY details(name, car, price) FROM '/tmp/insert-data/details.csv' DELIMITER ',' CSV HEADER;
-COPY service(work, location, car_plate, repairman, detail, price) FROM '/tmp/insert-data/service.csv' DELIMITER ',' CSV HEADER;
+COPY customers(car_plate, fullname, cellphone, car) FROM '/tmp/lab2-insert-data-snowflake/customers.csv' DELIMITER ',' CSV HEADER;
+COPY feedback(feedback_id,car_plate,rating,comment) FROM '/tmp/lab2-insert-data-snowflake/feedback.csv' DELIMITER ',' CSV HEADER;
+COPY location(address, city) FROM '/tmp/lab2-insert-data-snowflake/location.csv' DELIMITER ',' CSV HEADER;
+COPY servicecenter(center_id, address, owner, cellphone) FROM '/tmp/lab2-insert-data-snowflake/servicecenter.csv' DELIMITER ',' CSV HEADER;
+COPY works(kind, avg_days, price) FROM '/tmp/lab2-insert-data-snowflake/works.csv' DELIMITER ',' CSV HEADER;
+COPY repairmen(fullname, job) FROM '/tmp/lab2-insert-data-snowflake/repairmen.csv' DELIMITER ',' CSV HEADER;
+COPY details(name, car, price) FROM '/tmp/lab2-insert-data-snowflake/details.csv' DELIMITER ',' CSV HEADER;
+COPY service(work, location, car_plate, repairman, detail, price) FROM '/tmp/lab2-insert-data-snowflake/service.csv' DELIMITER ',' CSV HEADER;

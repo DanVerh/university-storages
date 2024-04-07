@@ -47,9 +47,9 @@ CREATE TABLE IF NOT EXISTS service (
     CONSTRAINT fk_service_detail FOREIGN KEY (detail) REFERENCES details (detail_id) ON DELETE RESTRICT ON UPDATE NO ACTION
 );
 
-COPY customers(car_plate, fullname, cellphone, car) FROM '/tmp/insert-data/customers.csv' DELIMITER ',' CSV HEADER;
-COPY location(address, city) FROM '/tmp/insert-data/location.csv' DELIMITER ',' CSV HEADER;
-COPY works(kind, avg_days, price) FROM '/tmp/insert-data/works.csv' DELIMITER ',' CSV HEADER;
-COPY repairmen(fullname, job) FROM '/tmp/insert-data/repairmen.csv' DELIMITER ',' CSV HEADER;
-COPY details(name, car, price) FROM '/tmp/insert-data/details.csv' DELIMITER ',' CSV HEADER;
-COPY service(work, location, car_plate, repairman, detail, price) FROM '/tmp/insert-data/service.csv' DELIMITER ',' CSV HEADER;
+COPY customers(car_plate, fullname, cellphone, car, rating) FROM '/tmp/lab2-insert-data-star/customers.csv' DELIMITER ',' CSV HEADER;
+COPY location(address, city, owner, cellphone) FROM '/tmp/lab2-insert-data-star/location.csv' DELIMITER ',' CSV HEADER;
+COPY works(kind, avg_days, price) FROM '/tmp/lab2-insert-data-star/works.csv' DELIMITER ',' CSV HEADER;
+COPY repairmen(fullname, job) FROM '/tmp/lab2-insert-data-star/repairmen.csv' DELIMITER ',' CSV HEADER;
+COPY details(name, car, price) FROM '/tmp/lab2-insert-data-star/details.csv' DELIMITER ',' CSV HEADER;
+COPY service(work, location, car_plate, repairman, detail, price) FROM '/tmp/lab2-insert-data-star/service.csv' DELIMITER ',' CSV HEADER;
